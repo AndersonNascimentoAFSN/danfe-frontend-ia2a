@@ -127,8 +127,8 @@ O agente utiliza o **MCPClient** para conectar-se ao servidor MCP:
 
 ```typescript
 const mcpClient = new MCPClient(
-  'https://mcp-danfe-ia2a.onrender.com/mcp',
-  'danfe_53b0d4af09aab7d7a6983cde9bfb18a3'
+  'https://xxx/mcp',
+  'xxxx'
 );
 
 // Adiciona a DANFE ao sistema

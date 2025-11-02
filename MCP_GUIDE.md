@@ -7,14 +7,14 @@ Este guia demonstra como usar o MCP Client no projeto DANFE Frontend IA2A.
 O servidor MCP requer autenticação via API Key. A chave é enviada automaticamente no header `X-API-Key`.
 
 **Credenciais:**
-- **URL**: `https://mcp-danfe-ia2a.onrender.com/mcp`
-- **API Key**: `danfe_53b0d4af09aab7d7a6983cde9bfb18a3`
+- **URL**: `https://xxx/mcp`
+- **API Key**: `xxxx`
 
 As credenciais já estão configuradas no projeto. Para usar em produção ou alterar, configure as variáveis de ambiente no arquivo `.env.local`:
 
 ```env
-NEXT_PUBLIC_MCP_SERVER_URL=https://mcp-danfe-ia2a.onrender.com/mcp
-NEXT_PUBLIC_MCP_API_KEY=danfe_53b0d4af09aab7d7a6983cde9bfb18a3
+NEXT_PUBLIC_MCP_SERVER_URL=https://xxx/mcp
+NEXT_PUBLIC_MCP_API_KEY=xxxx
 ```
 
 ## �🚀 Início Rápido
@@ -48,8 +48,8 @@ import { useState } from 'react';
 
 export default function MyComponent() {
   const { tools, callTool, isLoading, error } = useMCPTools(
-    'https://mcp-danfe-ia2a.onrender.com/mcp',
-    'danfe_53b0d4af09aab7d7a6983cde9bfb18a3'
+    'https://xxxx/mcp',
+    'xxxx'
   );
   const [result, setResult] = useState<string>('');
 
@@ -99,8 +99,8 @@ import { useState } from 'react';
 
 export default function ResourceComponent() {
   const { resources, readResource, isLoading } = useMCPResources(
-    'https://mcp-danfe-ia2a.onrender.com/mcp',
-    'danfe_53b0d4af09aab7d7a6983cde9bfb18a3'
+    'https://xxx/mcp',
+    'xxxx'
   );
   const [content, setContent] = useState<string>('');
 

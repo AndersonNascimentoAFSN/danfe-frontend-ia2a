@@ -63,8 +63,8 @@ Crie um arquivo .env.local na raiz do projeto:
 OPENAI_API_KEY=your-openai-api-key
 
 # MCP Server Configuration
-NEXT_PUBLIC_MCP_SERVER_URL=https://mcp-danfe-ia2a.onrender.com/mcp
-NEXT_PUBLIC_MCP_API_KEY=danfe_53b0d4af09aab7d7a6983cde9bfb18a3
+NEXT_PUBLIC_MCP_SERVER_URL=
+NEXT_PUBLIC_MCP_API_KEY=
 \`\`\`
 
 ## 🚀 Executando o Projeto
@@ -103,7 +103,7 @@ O projeto inclui integração completa com o Model Context Protocol (MCP) para c
 
 ### Servidor MCP
 
-- **URL**: https://mcp-danfe-ia2a.onrender.com
+- **URL**: https://xxx
 - **Protocolo**: JSON-RPC 2.0
 
 ### Recursos do MCP Client
@@ -125,7 +125,7 @@ Navegue para `/mcp` para acessar a interface visual do MCP Explorer.
 import { useMCPTools } from '@/lib/mcp';
 
 function MyComponent() {
-  const { tools, callTool, isLoading } = useMCPTools('https://mcp-danfe-ia2a.onrender.com');
+  const { tools, callTool, isLoading } = useMCPTools('xxx');
 
   const handleExecuteTool = async () => {
     const result = await callTool({

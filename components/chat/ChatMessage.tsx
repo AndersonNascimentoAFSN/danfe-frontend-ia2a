@@ -43,9 +43,9 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, status }) => 
             </div>
           )}
           <div className="flex-1">
-            <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
+            {/* <p className="text-sm leading-relaxed whitespace-pre-wrap break-words"> */}
               <Streamdown isAnimating={status === 'streaming'}>{content}</Streamdown>
-            </p>
+            {/* </p> */}
           </div>
           {isUser && (
             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white text-blue-600 flex items-center justify-center text-xs font-bold shadow-lg border-2 border-blue-200">

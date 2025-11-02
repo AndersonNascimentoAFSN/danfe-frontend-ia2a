@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-const MCP_SERVER_URL = process.env.NEXT_PUBLIC_MCP_SERVER_URL || 'https://mcp-danfe-ia2a.onrender.com/mcp';
-const MCP_API_KEY = process.env.NEXT_PUBLIC_MCP_API_KEY || 'danfe_53b0d4af09aab7d7a6983cde9bfb18a3';
+const MCP_SERVER_URL = process.env.NEXT_PUBLIC_MCP_SERVER_URL || '';
+const MCP_API_KEY = process.env.NEXT_PUBLIC_MCP_API_KEY || '';
 
 export async function GET() {
   try {

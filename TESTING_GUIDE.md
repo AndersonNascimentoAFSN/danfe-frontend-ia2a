@@ -138,9 +138,9 @@ Agora busque a DANFE 22222222222222222222222222222222222222222222
 
 **Como testar:**
 ```bash
-curl -X POST https://mcp-danfe-ia2a.onrender.com/mcp/tools/list \
+curl -X POST https://xxxx/mcp/tools/list \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: danfe_53b0d4af09aab7d7a6983cde9bfb18a3" \
+  -H "X-API-Key: xxxx" \
   -d '{"jsonrpc":"2.0","method":"tools/list","id":1}'
 ```
 
