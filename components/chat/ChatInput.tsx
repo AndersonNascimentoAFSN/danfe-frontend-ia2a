@@ -35,7 +35,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           onChange={(e) => setInput(e.target.value)}
           placeholder={placeholder}
           disabled={disabled || isLoading}
-          className="flex-1 px-5 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-all duration-200 text-sm"
+          className="flex-1 px-5 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-all duration-200 text-sm text-gray-900"
         />
         <Button
           type="submit"
