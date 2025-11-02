@@ -1,36 +1,172 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DANFE Frontend IA2A
 
-## Getting Started
+Um assistente inteligente para consulta de DANFEs (Documento Auxiliar da Nota Fiscal Eletrônica) construído com Next.js, Tailwind CSS e Vercel AI SDK.
 
-First, run the development server:
+## 🎯 Funcionalidades
 
-```bash
+### � Chat Inteligente com IA
+- Interface conversacional para consulta de DANFEs
+- Busca automática de informações fiscais pela chave de acesso
+- Respostas formatadas e fáceis de entender
+
+### 🔍 Busca de DANFE
+- Digite uma chave de acesso de 44 dígitos no chat
+- O assistente busca automaticamente as informações da DANFE
+- Dados estruturados e interpretados pela IA
+
+### 🔌 Integração MCP
+- Cliente MCP completo para integração com servidores externos
+- Autenticação via API Key
+- Explorador de ferramentas e recursos MCP
+
+## �🚀 Tecnologias
+
+- **Next.js 16+** - Framework React com App Router
+- **TypeScript** - Tipagem estática para JavaScript
+- **Tailwind CSS** - Framework CSS utilitário
+- **Vercel AI SDK** - Componentes de chat com IA e tool calling
+- **Model Context Protocol (MCP)** - Protocolo para integração com servidores externos
+- **Zod** - Validação de schemas TypeScript-first
+- **Axios** - Cliente HTTP para requisições
+- **ESLint** - Linter para manter código consistente
+
+## 📦 Componentes Disponíveis
+
+### Componentes de UI (components/ui)
+
+- **Button** - Botão com variantes (primary, secondary, outline, ghost) e tamanhos (sm, md, lg)
+- **Typography** - Componentes de tipografia (H1-H6, Paragraph, Lead, Small, Muted)
+
+### Componentes de Layout (components/layout)
+
+- **Navbar** - Barra de navegação responsiva com menu mobile
+- **Header** - Cabeçalho hero com título, subtítulo e CTAs
+
+### Componentes de Chat (components/chat)
+
+- **Chat** - Componente principal de chat com IA
+- **ChatMessage** - Renderiza mensagens individuais
+- **ChatInput** - Campo de entrada de mensagens
+
+## 🛠️ Instalação
+
+\`\`\`bash
+npm install
+\`\`\`
+
+## ⚙️ Configuração
+
+Crie um arquivo .env.local na raiz do projeto:
+
+\`\`\`env
+# OpenAI API Key para o chat
+OPENAI_API_KEY=your-openai-api-key
+
+# MCP Server Configuration
+NEXT_PUBLIC_MCP_SERVER_URL=https://mcp-danfe-ia2a.onrender.com/mcp
+NEXT_PUBLIC_MCP_API_KEY=danfe_53b0d4af09aab7d7a6983cde9bfb18a3
+\`\`\`
+
+## 🚀 Executando o Projeto
+
+\`\`\`bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O projeto estará disponível em http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📖 Como Usar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Consultando uma DANFE
 
-## Learn More
+1. Acesse http://localhost:3000
+2. No chat, digite ou cole uma chave de acesso de 44 dígitos
+3. Exemplo: "Busque a DANFE 12345678901234567890123456789012345678901234"
+4. O assistente automaticamente:
+   - Valida a chave de acesso
+   - Busca as informações no servidor MCP
+   - Apresenta os dados de forma organizada
 
-To learn more about Next.js, take a look at the following resources:
+### Páginas Disponíveis
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **/** - Chat principal para consulta de DANFEs
+- **/mcp** - Explorador MCP (ferramentas e recursos)
+- **/components** - Guia de componentes UI
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+Desenvolvido com ❤️ usando Next.js, Tailwind CSS e Vercel AI SDK
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔌 MCP Client Integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O projeto inclui integração completa com o Model Context Protocol (MCP) para conectar-se a servidores MCP e utilizar suas ferramentas, recursos e prompts.
+
+### Servidor MCP
+
+- **URL**: https://mcp-danfe-ia2a.onrender.com
+- **Protocolo**: JSON-RPC 2.0
+
+### Recursos do MCP Client
+
+- **Tools Explorer**: Visualize e execute ferramentas disponíveis no servidor MCP
+- **Resources Viewer**: Navegue e leia recursos expostos pelo servidor
+- **Hooks React**: Integração facilitada com hooks personalizados
+- **TypeScript**: Tipagem completa para todas as operações
+
+### Como usar o MCP Client
+
+#### 1. Acessar o MCP Explorer
+
+Navegue para `/mcp` para acessar a interface visual do MCP Explorer.
+
+#### 2. Usar programaticamente
+
+\`\`\`typescript
+import { useMCPTools } from '@/lib/mcp';
+
+function MyComponent() {
+  const { tools, callTool, isLoading } = useMCPTools('https://mcp-danfe-ia2a.onrender.com');
+
+  const handleExecuteTool = async () => {
+    const result = await callTool({
+      name: 'myTool',
+      arguments: { param1: 'value1' }
+    });
+    console.log(result);
+  };
+
+  return (
+    <div>
+      {tools.map(tool => (
+        <div key={tool.name}>{tool.name}</div>
+      ))}
+    </div>
+  );
+}
+\`\`\`
+
+#### 3. Hooks disponíveis
+
+- \`useMCPClient(serverUrl)\` - Cliente base MCP
+- \`useMCPTools(serverUrl)\` - Gerenciamento de ferramentas
+- \`useMCPResources(serverUrl)\` - Gerenciamento de recursos
+- \`useMCPPrompts(serverUrl)\` - Gerenciamento de prompts
+
+### Componentes MCP
+
+- **MCPToolsExplorer** - Interface para explorar e executar ferramentas
+- **MCPResourcesViewer** - Interface para visualizar e ler recursos
+
+### Estrutura de Arquivos MCP
+
+\`\`\`
+lib/mcp/
+├── client.ts      # Cliente MCP principal
+├── hooks.ts       # Hooks React para MCP
+└── index.ts       # Exportações
+
+components/mcp/
+├── MCPToolsExplorer.tsx
+├── MCPResourcesViewer.tsx
+└── index.ts
+\`\`\`
