@@ -83,7 +83,7 @@ export const Chat: React.FC<ChatProps> = ({
         )}
 
         {messages.map((message) => (
-          <ChatMessage key={message.id} message={message} />
+          <ChatMessage key={message.id} message={message} status={status} />
         ))}
 
         {isLoading && messages.length > 0 && (

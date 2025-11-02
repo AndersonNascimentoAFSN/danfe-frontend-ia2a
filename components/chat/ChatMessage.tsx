@@ -1,11 +1,15 @@
+'use client';
+
 import React from 'react';
-import { UIMessage } from 'ai';
+import { ChatStatus, UIMessage } from 'ai';
+import { Streamdown } from 'streamdown';
 
 interface ChatMessageProps {
   message: UIMessage;
+  status: ChatStatus;
 }
 
-export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
+export const ChatMessage: React.FC<ChatMessageProps> = ({ message, status }) => {
   const isUser = message.role === 'user';
 
   // Extrai o conteúdo da mensagem
@@ -40,7 +44,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           )}
           <div className="flex-1">
             <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
-              {content}
+              <Streamdown isAnimating={status === 'streaming'}>{content}</Streamdown>
             </p>
           </div>
           {isUser && (
