@@ -23,7 +23,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navItems = [
     { label: '🏠 Home', href: '/' },
     { label: '💬 Chat', href: '/chat' },
-    { label: '🔌 Status MCP', href: '/mcp' },
+    { label: '� Histórico', href: '/historico' },
+    { label: '�🔌 Status MCP', href: '/mcp' },
   ];
 
   return (

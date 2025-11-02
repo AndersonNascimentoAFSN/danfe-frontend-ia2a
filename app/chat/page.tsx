@@ -1,7 +1,28 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Navbar } from '@/components/layout';
 import { Chat } from '@/components/chat';
 
 export default function ChatPage() {
+  const searchParams = useSearchParams();
+  const chave = searchParams.get('chave');
+
+  useEffect(() => {
+    if (chave) {
+      // Adiciona um pequeno delay para garantir que o chat está montado
+      const timer = setTimeout(() => {
+        const input = document.querySelector('input[type="text"]') as HTMLInputElement;
+        if (input) {
+          input.value = chave;
+          input.focus();
+        }
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [chave]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <Navbar logo="DANFE IA" />
