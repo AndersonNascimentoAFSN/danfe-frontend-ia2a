@@ -58,11 +58,26 @@ export class DanfeService {
         };
       }
 
+      // Extrai os dados do resultado MCP
+      const dadosDanfe = result.content?.[0]?.data || result.content?.[0]?.text || result;
+      
+      // Converte para objeto se for string JSON
+      let dadosParaSalvar: Record<string, unknown>;
+      if (typeof dadosDanfe === 'string') {
+        try {
+          dadosParaSalvar = JSON.parse(dadosDanfe);
+        } catch {
+          dadosParaSalvar = { raw: dadosDanfe };
+        }
+      } else {
+        dadosParaSalvar = dadosDanfe as Record<string, unknown>;
+      }
+
       // 3. Salva no banco de dados para cache futuro
       console.log(`💾 Salvando DANFE no cache...`);
       const novaDanfe = new Danfe({
         chaveAcesso,
-        dados: result,
+        dados: dadosParaSalvar,
         consultadoEm: new Date(),
         atualizadoEm: new Date(),
       });
@@ -72,7 +87,7 @@ export class DanfeService {
 
       return {
         success: true,
-        data: result,
+        data: dadosParaSalvar,
         message: 'DANFE encontrada no servidor e salva no cache',
         fonte: 'mcp',
       };

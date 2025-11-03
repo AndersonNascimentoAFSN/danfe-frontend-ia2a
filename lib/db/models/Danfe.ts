@@ -12,7 +12,6 @@ const DanfeSchema = new Schema<IDanfe>(
     chaveAcesso: {
       type: String,
       required: true,
-      unique: true,
       length: 44,
       match: /^\d{44}$/,
     },
